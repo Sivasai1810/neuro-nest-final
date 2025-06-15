@@ -1,7 +1,7 @@
 require('dotenv').config()
 const jwt=require("jsonwebtoken")
 const jwt_secure=process.env.JWT_PASSWORD
-const verify= async(req,res)=>{
+const verify= async(req,res,next)=>{
 const accessToken=req.cookies.accessToken
 if(!accessToken){
     return(
@@ -15,11 +15,11 @@ if(error){
 )
 }else{
      req.username=decoded.username
-     next()
+    next()
 }
     })
 }
-
+//  next()
 }
  const tryrefresh= async(req,res,next)=>{
   const refreshToken=req.cookies.refreshToken

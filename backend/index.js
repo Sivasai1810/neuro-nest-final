@@ -12,11 +12,12 @@ app.use(cookieParser())
 const { connectdb } =require('./db')
 const createroute=require("./routes/create")
 const loginroute=require("./routes/login")
-
+const dashboardroute=require('./routes/dashboard')
 try{
 connectdb()
 app.use('/api/create',createroute)
 app.use('/api/login',loginroute)
+app.use('/api/dashboard',dashboardroute)
  console.log("somthingggggggg is wrong ")
 }catch(error)
 {

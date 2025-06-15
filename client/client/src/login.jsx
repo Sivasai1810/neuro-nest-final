@@ -20,13 +20,13 @@ try{
 const res=await  axios.post("http://localhost:2023/api/login",data,{
     withCredentials:true
 })
-console.log(res.data.userId)
 setMessage1(res.data.message)
+console.log(res.data.message)
 if (res.data.success === true) {
 
   alert(res.data.message);
   navigate('/profile');
-  console.log("ookokokok")
+  console.log(message1)
 
 }
 }

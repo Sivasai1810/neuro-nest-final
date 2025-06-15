@@ -1,8 +1,8 @@
-import { useState } from 'react'
+
 import {BrowserRouter,Routes,Route} from 'react-router-dom'
  import Login from './login'
 import Create from './create'
-import  Profile  from './profile'
+import Profile from './profile'
 import './App.css'
 
 function App() {
@@ -13,7 +13,7 @@ function App() {
          <Routes>
           <Route path='/create' element={<Create />}/>
           <Route  path='*' element={<Login />}/>
-          <Route path='/profile' elememt={<Profile />}/>
+           <Route path='/profile' element={<Profile />}/>
          </Routes>
      </BrowserRouter>
   )

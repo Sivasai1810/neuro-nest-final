@@ -38,12 +38,15 @@ const handlenewpage=()=>{
 
 return(
 <form onSubmit={handleroute}>
-    <input type="text" value={data.username} name="username" onChange={handlepush}  placeholder="username"/><br/>
-    <input type="text" value={data.password} name="password" onChange={handlepush}  placeholder="password"/><br/>
-    <input type="text" value={data.email} name="email" onChange={handlepush}  placeholder="email"/><br/>
-    <button type="submit" onClick={handlenewpage}>create-account</button>
-     <Link className="link" to ='/login'>login</Link>
-    <p>{message1}</p>
+     <div className="login">
+      <h1 className="heading">welcome to the neuro-nest</h1>
+    <input className="inputs" type="text" value={data.username} name="username" onChange={handlepush}  placeholder="username"/><br/>
+    <input className="inputs" type="text" value={data.password} name="password" onChange={handlepush}  placeholder="password"/><br/>
+    <input  className="inputs" type="text" value={data.email} name="email" onChange={handlepush}  placeholder="email"/><br/>
+    <button className ="button2" type="submit" onClick={handlenewpage}>create-account</button>
+     <Link className="link" to ='/login'>Login</Link>
+    <p className="next">{message1}</p>
+    </div>
 
 
 </form>

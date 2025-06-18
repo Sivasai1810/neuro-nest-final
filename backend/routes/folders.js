@@ -1,7 +1,8 @@
 const express = require('express')
+const multer=require('multer')
 const router=express.Router()
-const port = 3000
 
+const upload=multer({storage})
 router.get('/', (req, res) =>{
     
 } )

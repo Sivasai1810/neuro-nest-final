@@ -3,6 +3,7 @@ import {BrowserRouter,Routes,Route} from 'react-router-dom'
  import Login from './login'
 import Create from './create'
 import Profile from './profile'
+import Entry from './entry'
 import './App.css'
 
 function App() {
@@ -12,8 +13,9 @@ function App() {
     <BrowserRouter>
          <Routes>
           <Route path='/create' element={<Create />}/>
-          <Route  path='*' element={<Login />}/>
+          <Route  path='*' element={<Entry />}/>
            <Route path='/profile' element={<Profile />}/>
+           <Route path ='/login' element={<Login />}/>
          </Routes>
      </BrowserRouter>
   )

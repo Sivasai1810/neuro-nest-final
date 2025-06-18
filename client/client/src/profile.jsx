@@ -15,7 +15,6 @@ setMessage5(res.data.user)
 }
 fetch()
  },[])
-console.log(message5)
    }catch(error){
     console.log("arey babu",error)
    }
@@ -23,13 +22,11 @@ console.log(message5)
    const handleput=(e)=>{
 console.log(e.target.files)
 const newfiles=Array.from(e.target.files)
-console.log(newfiles)
-setFiles(()=>[...files,...newfiles])
+console.log(newfiles[0].name)
+setFiles((files)=>[...files,...newfiles])
+}
 
 
-   }
-
-   console.log(files)
 // const formdata=new FormData()
 //     files.forEach((file)=>{
 // formdata.append("myfiles",file)
@@ -69,7 +66,11 @@ setFiles(()=>[...files,...newfiles])
        multiple
        onChange={handleput}
       />
-   
+   <select>
+   {files.map((filename,index)=>(
+    <option key={index}>{filename.name}</option>
+   ))}
+   </select>
      <button type='submit'>upload file</button>
       </form>
        

@@ -1,29 +1,30 @@
 import React, { useState } from 'react'
 import { useEffect } from 'react'
+import Stop from './stopwatch'
 import axios from 'axios'
 const profile =()=> {
   const[files,setFiles]=useState([])
    const [message5,setMessage5]=useState('')
-   try{
-   useEffect(()=>{   
-    const fetch=async()=>{
-const res= await axios.get("http://localhost:2023/api/dashboard",{
-    withCredentials:true
+//    try{
+//    useEffect(()=>{   
+//     const fetch=async()=>{
+// const res= await axios.get("http://localhost:2023/api/dashboard",{
+//     withCredentials:true
    
-})
-setMessage5(res.data.user) 
-}
-fetch()
- },[])
-   }catch(error){
-    console.log("arey babu",error)
-   }
+// })
+// setMessage5(res.data.user) 
+// }
+// fetch()
+//  },[])
+//    }catch(error){
+//     console.log("arey babu",error)
+//    }
 
-   const handleput=(e)=>{
+  const handleput=(e)=>{
 console.log(e.target.files)
 const newfiles=Array.from(e.target.files)
-console.log(newfiles[0].name)
-setFiles((files)=>[...files,...newfiles])
+ console.log(newfiles[0].name)
+ setFiles((files)=>[...files,...newfiles])
 }
 
 
@@ -72,9 +73,15 @@ setFiles((files)=>[...files,...newfiles])
    ))}
    </select>
      <button type='submit'>upload file</button>
+     <div className='rightbar'>
+      <p>arey babh</p>
+         <div className='stopwatch'>
+       <Stop />
+    </div>
+    </div>
       </form>
        
-    
+
   )
 }
 

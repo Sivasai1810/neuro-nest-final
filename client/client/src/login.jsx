@@ -38,7 +38,7 @@ catch(error){
 }
 
 return(
-<form  onSubmit={handleroute}>
+<form onSubmit={handleroute}>
   <div className="login">
   <h1 className="heading">welcome to the neuro-nest</h1><br/>
     <input className="inputs" type="text" value={data.username} name="username" onChange={handlepush}  placeholder="username"/><br/>

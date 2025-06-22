@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { useEffect } from 'react'
 import Stop from './stopwatch'
+import Todo from './todo'
 import axios from 'axios'
 const profile =()=> {
   const[files,setFiles]=useState([])
@@ -74,10 +75,13 @@ const newfiles=Array.from(e.target.files)
    </select>
      <button type='submit'>upload file</button>
      <div className='rightbar'>
-      <p>arey babh</p>
          <div className='stopwatch'>
        <Stop />
     </div>
+   
+    </div>
+       <div className='todo'>
+ <Todo />
     </div>
       </form>
        

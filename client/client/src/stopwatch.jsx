@@ -1,57 +1,66 @@
-import React, { useEffect, useRef, useState } from 'react'
-
-
+import React, { useEffect, useRef, useState } from 'react';
 function Stopwatch() {
-  const [isruning,setIsruning]=useState(false)
-  const [elapsedtime ,setElapsedtime]=useState(0)
-  const IntervalIdRef=useRef(null)
-  const starttimeRef=useRef(0)
-useEffect(()=>{
-  if(isruning  && starttimeRef.current !== 0){
-  IntervalIdRef.current=setInterval(()=>{
-        setElapsedtime(Date.now()-starttimeRef.current)
-  },10)
-  }
-  return () => clearInterval(IntervalIdRef.current);
-},[isruning])
+  const [isRunning, setIsRunning] = useState(false);
+  const [elapsedTime, setElapsedTime] = useState(0);
+  const [expanded, setExpanded] = useState(false);
 
+  const intervalRef = useRef(null);
+  const startRef = useRef(0);
 
+  useEffect(() => {
+    if (isRunning) {
+      intervalRef.current = setInterval(() => {
+        setElapsedTime(Date.now() - startRef.current);
+      }, 10);
+    }
+    return () => clearInterval(intervalRef.current);
+  }, [isRunning]);
 
-const handlestart=(e)=>{
-  e.preventDefault()
-  setIsruning(true)
-  starttimeRef.current=Date.now()-elapsedtime
-}
-const handlestop=()=>{
-  setIsruning(false)
-}
-const handlerestart=()=>{
-  setIsruning(false)
-  setElapsedtime(0)
-}
-const format=()=>{
-  let hours=Math.floor(elapsedtime/(60*60*1000))
-  let minutes=Math.floor(elapsedtime/(60*1000)%60)
-  let seconds=Math.floor(elapsedtime/(1000)%60)
-  let milliseconds=Math.floor((elapsedtime%1000)/10)
-      hours = String(hours).padStart(2, '0');
-    minutes = String(minutes).padStart(2, '0');
-    seconds = String(seconds).padStart(2, '0');
-   milliseconds= String(milliseconds).padStart(2, '0');
+  const handleStart = () => {
+    setIsRunning(true);
+    startRef.current = Date.now() - elapsedTime;
+    setExpanded(false);
+  };
+
+  const handleStop = () => {
+    setIsRunning(false);
+    setExpanded(false);
+  };
+
+  const handleRestart = () => {
+    setIsRunning(false);
+    setElapsedTime(0);
+    setExpanded(false);
+  };
+
+  const formatTime = () => {
+    let hours = Math.floor(elapsedTime / (60 * 60 * 1000));
+    let minutes = Math.floor((elapsedTime / (60 * 1000)) % 60);
+    let seconds = Math.floor((elapsedTime / 1000) % 60);
+    return `${String(hours).padStart(2, '0')}:${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
+  };
+
   return (
-   `${hours}:${minutes}:${seconds}`
-  )
+  <>
+    {expanded && <div className="overlay" onClick={() => setExpanded(false)}></div>}
+    <div className="watch-wrapper">
+      <div className="watch-top" onClick={() => setExpanded(!expanded)}>
+        <span className="time-text">{formatTime()}</span>
+        <button className="play-button">▶</button>
+      </div>
 
-
-}
-  return (
-    <div>
-   <p className='format'>{format()}</p>
-   <button type='button' className ="start"onClick={handlestart}>start</button>
-   <button type='button' className="stop" onClick={handlestop}>stop </button>
-   <button type='button'  className="restart"onClick={handlerestart}>restart </button>
+      {expanded && (
+        <div className="watch-controls">
+          <button onClick={handleStart} className="ctrl-btn start">Start</button>
+          <button onClick={handleStop} className="ctrl-btn stop">Stop</button>
+          <button onClick={handleRestart} className="ctrl-btn restart">Restart</button>
+        </div>
+      )}
     </div>
-  )
+  </>
+);
+
 }
 
-export default Stopwatch
+export default Stopwatch;
+

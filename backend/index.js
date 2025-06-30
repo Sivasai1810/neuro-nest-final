@@ -13,15 +13,17 @@ const { connectdb } =require('./db')
 const createroute=require("./routes/create")
 const loginroute=require("./routes/login")
 const dashboardroute=require('./routes/dashboard')
+const apibot=require('./routes/apibot')
 try{
 connectdb()
 app.use('/api/create',createroute)
 app.use('/api/login',loginroute)
 app.use('/api/dashboard',dashboardroute)
+app.use('/gemini',apibot)
  console.log("somthingggggggg is wrong ")
 }catch(error)
 {
     console.log("somthin is wrong ",error)
 }
-const port=process.env.PORT
+const port=process.env.PORT;
 app.listen(port, () => console.log(`Example app listening on port ${port}!`))

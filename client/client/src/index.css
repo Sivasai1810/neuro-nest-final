@@ -93,14 +93,15 @@ box-shadow: none;
 }
 .stopwatch{
   position: fixed;
-  top: 0px;
+  top: 8px;
+  right: 0px;
   background-color: #0f172a;
   border-radius: 10px;
-  padding: 20px;
+  padding: 10px;
   align-items: center;
   font-family: sans-serif;
   font-weight: bold;
-  width: 25%;
+  width: 326.5px;
 
 }
 
@@ -111,57 +112,121 @@ box-shadow: none;
   background-color: #0f172a;  
 
 }
-.restart{
-  background-color: #10b981;
-  padding: 5px;
-  margin: 7px;
+.watch-wrapper {
+  margin: 20px auto;
+  width: fit-content;
+  text-align: center;
+  font-family: 'Arial', sans-serif;
+}
+
+.watch-top {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
   cursor: pointer;
-   border-radius: 30px;
-   font-size: 20px;
+  font-size: 24px;
 }
-.start{
-  background-color:green;
-  padding: 7px;
-  margin: 7px;
-   cursor: pointer;
-   border-radius: 30px;
-   font-size: 20px;
-}
-.stop{
-  background-color:red;
-  padding: 7px;
-  margin: 7px;
+
+.play-button {
+  background-color: black;
+  color: white;
+  border: none;
+  border-radius: 50%;
+  width: 35px;
+  height: 35px;
+  font-size: 16px;
   cursor: pointer;
-   border-radius: 30px;
-   font-size: 20px;
 }
-.format{
-  font-size: 34px;
+
+.watch-controls {
+  margin-top: 10px;
+  animation: slideDown 0.3s ease-in-out;
 }
-.rightbar{
-position: fixed;
-right: 0px;
-top: 0px;
-width: 25%;
-height: 100%;
-background-color:rgb(65, 61, 61);
-align-items: center;
+
+.ctrl-btn {
+  margin: 6px;
+  padding: 8px 16px;
+  border: none;
+  border-radius: 6px;
+  font-weight: bold;
+  cursor: pointer;
 }
+
+.start { background-color: #28a745; color: white; }
+.stop { background-color: #dc3545; color: white; }
+.restart { background-color: #007bff; color: white; }
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+/* Overlay to blur background */
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  backdrop-filter: blur(5px);
+  background: rgba(0, 0, 0, 0.3); /* semi-transparent */
+  z-index: 999;
+}
+
+/* Watch content should appear above blur */
+.watch-wrapper {
+  position: relative;
+  z-index: 1000;
+  margin: 20px auto;
+  width: fit-content;
+  text-align: center;
+  font-family: 'Arial', sans-serif;
+}
+
+
+
 .todo{
   position: fixed;
-  top: 220px;
+  top: 140px;
   right: 0px;
   background-color: #0f172a;
   border-radius: 10px;
 padding: -10px;
   font-family: sans-serif;
   font-weight: bold;
-  width: 25%;
+  width: 25.4%;
 }
 .heading1{
   padding-top: -11px;
 }
 .add{
   padding-top: -7px;
+}
 
+.bot{
+  position: fixed;
+  top: 580px;
+  right: 290px;
+  border: solid 2px red;
+  border-radius: 10px;
+}
+.botimage{
+ height: 40px;
+ cursor: pointer;
+}
+.closebar{
+  position: fixed;
+  left: 30px;
+  top: 50px;
+  border: solid 2px red;
+  border-radius: 20px;
+  background-color: red;
+  text-align: center;
+  cursor: pointer;
 }

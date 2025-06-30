@@ -1,11 +1,14 @@
 import React, { useState } from 'react'
-import { useEffect } from 'react'
+import { useNavigate }from 'react-router-dom'
 import Stop from './stopwatch'
 import Todo from './todo'
-import axios from 'axios'
+import Botimage from './assets/bot.png'
+import ChatBot from './chatbot'
+
 const profile =()=> {
+  const navigation=useNavigate();
   const[files,setFiles]=useState([])
-   const [message5,setMessage5]=useState('')
+   const [message5,setMessage5]=useState('')   
 //    try{
 //    useEffect(()=>{   
 //     const fetch=async()=>{
@@ -59,8 +62,8 @@ const newfiles=Array.from(e.target.files)
 //    }
 
   return (
-    <form >
-  
+    
+    <div >
       <p>WELCOME</p>
       <p>{message5}</p>
       <input type='file' 
@@ -77,13 +80,17 @@ const newfiles=Array.from(e.target.files)
      <div className='rightbar'>
          <div className='stopwatch'>
        <Stop />
-    </div>
-   
+    </div>   
     </div>
        <div className='todo'>
  <Todo />
     </div>
-      </form>
+<div className='bot'>
+<img className='botimage' src={Botimage} alt="botimage"  onClick={()=>navigation('/chatbot')}/>
+</div>
+</div>
+
+
        
 
   )

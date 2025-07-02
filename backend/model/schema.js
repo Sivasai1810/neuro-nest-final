@@ -6,6 +6,18 @@ const userschema=mongodb.Schema({
     email:{type:String ,required:true},
 })
 const user=mongodb.model("user",userschema)
+const taskschemas=mongodb.Schema({
+      userId:{
+        type:mongodb.Schema.Types.ObjectId,
+        ref:user
+    },
+    content :{type:[String],
+          required:true,
+          default:[]
+    }
+})
+const todo=mongodb.model("todo",taskschemas);
+
 const validateinput=(data)=>{
    const Schema=joi.object({
     username:joi.string().required().label("username"),
@@ -17,5 +29,6 @@ const validateinput=(data)=>{
 module.exports=({
     user,
     validateinput,
+    todo
     
 })

@@ -66,12 +66,14 @@ res.cookie("refreshToken",refreshToken,{
 })
 
 res.json({message:"loggend sucessfully bro",
-    //    userId:exist._id ,
-    success:true  })}
+     userId:exist._id ,
+    success:true,
+username:exist.username  })}
 catch(error){
     res.json({message:"internal server error" ,error})
 }
 })
+console.log()
 
 
 const newinputs=(data)=>{

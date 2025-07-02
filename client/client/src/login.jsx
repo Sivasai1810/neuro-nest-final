@@ -1,7 +1,6 @@
 import axios from "axios";
  import { Link,useNavigate } from "react-router-dom";
 import { useState } from "react";
-import image from './assets/mainpage.png'
 import "./index.css"
 function Login(){
   const navigate=useNavigate()
@@ -19,11 +18,11 @@ const handlepush=(e)=>{
 const handleroute= async(e)=>{
 e.preventDefault()
 try{
-const res=await  axios.post("http://localhost:2023/api/login",data,{
+const res=await  axios.post("http://localhost:2022/api/login",data,{
     withCredentials:true
 })
 setMessage1(res.data.message)
-console.log(res.data.message)
+localStorage.setItem("userId",res.data.userId);
 if (res.data.success === true) {
 
   alert(res.data.message);

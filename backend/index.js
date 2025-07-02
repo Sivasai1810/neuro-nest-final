@@ -14,12 +14,14 @@ const createroute=require("./routes/create")
 const loginroute=require("./routes/login")
 const dashboardroute=require('./routes/dashboard')
 const apibot=require('./routes/apibot')
+const todo=require('./routes/todo');
 try{
 connectdb()
 app.use('/api/create',createroute)
 app.use('/api/login',loginroute)
 app.use('/api/dashboard',dashboardroute)
 app.use('/gemini',apibot)
+app.use('/todo',todo);  
  console.log("somthingggggggg is wrong ")
 }catch(error)
 {

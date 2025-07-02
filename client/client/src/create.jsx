@@ -19,7 +19,7 @@ const handlepush=(e)=>{
 const handleroute= async(e)=>{
 e.preventDefault()
 try{
-const res=await  axios.post("http://localhost:2023/api/create",data)
+const res=await  axios.post("http://localhost:2022/api/create",data)
 
 console.log(res.data.userId)
 setMessage1(res.data.message)

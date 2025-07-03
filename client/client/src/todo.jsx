@@ -1,6 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios'
+import plus from "./assets/plus.png"
+import {useNavigate} from 'react-router-dom';
+import close from './assets/close.png'
 function Todo() {
+  const navigate=useNavigate();
   const [input, setInput] = useState("");    
   const [tasks, setTasks] = useState([
     "yourtaskare"
@@ -40,26 +44,35 @@ e.preventDefault()
   }
   
   return (
-    <div>
+    <div className='todo1'>
       <p className='heading1'>Todo-List</p>
-      <input 
+      <input className='input'
         type='text' 
         value={input} 
         onChange={handleInputChange} 
       /><br />
       <button className='add' onClick={addTask}>Add-Task</button>
-      <ul>
-        {tasks.map((task, index) => (
-          <li key={index}>{task},<button>Delete</button></li>
-          
-        ))}
-      </ul>
-       {/* <ul>
-        {message.map((task, index) => (
-          <li key={index}>{task},<button>Delete</button></li>
-          
-        ))}
-      </ul> */}
+   <table className="todo-table">
+  <thead>
+    <tr>
+      <th>Todo</th>
+      <th>Add Notes</th>
+      <th>Delete</th>
+    </tr>
+  </thead>
+  <tbody>
+    {tasks.map((task, index) => (
+      <tr key={index}>
+        <td>{task}</td>
+        <td className='image'><img  src={plus} alt="+"  onClick={()=>{navigate('/notes')}}/></td>
+        <td className='image'><button  className='delete'onClick={() => deleteTask(index)}>Delete</button></td>
+      </tr>
+    ))}
+  </tbody>
+</table>
+ <img className="closebar"src={close} alt="*"  onClick={()=>{navigate('/profile')}}/>
+
+     
       
     </div>
   );

@@ -80,10 +80,11 @@ const newfiles=Array.from(e.target.files)
      <div className='rightbar'>
          <div className='stopwatch'>
        <Stop />
+           <button className='heading1' onClick={()=>navigation('/todo')}>Todo-List</button>
     </div>   
     </div>
        <div className='todo'>
- <Todo />
+    
     </div>
 <div className='bot'>
 <img className='botimage' src={Botimage} alt="botimage"  onClick={()=>navigation('/chatbot')}/>

@@ -9,7 +9,6 @@ function Todo() {
   const [tasks, setTasks] = useState([
     "yourtaskare"
   ]);
-  const [message,setMessage]=useState([])
     const userId=localStorage.getItem("userId");   
 useEffect( ()=>{
   const fetchdata=async()=>{
@@ -40,9 +39,17 @@ e.preventDefault()
   catch(error){
   console.log("error",error);
 }
-
   }
-  
+const deleteTask=async(index)=>{
+const res=await axios.post("http://localhost:2022/todo/delete",{
+  userId,
+  index
+
+})
+alert(res.data.message);
+window.location.reload();
+
+} 
   return (
     <div className='todo1'>
       <p className='heading1'>Todo-List</p>
@@ -70,10 +77,7 @@ e.preventDefault()
     ))}
   </tbody>
 </table>
- <img className="closebar"src={close} alt="*"  onClick={()=>{navigate('/profile')}}/>
-
-     
-      
+ <img className="closebar"src={close} alt="*"  onClick={()=>{navigate('/profile')}}/>     
     </div>
   );
 

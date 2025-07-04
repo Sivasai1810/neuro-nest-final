@@ -1,5 +1,6 @@
 const mongodb=require("mongoose")
 const joi=require("joi")
+
 const userschema=mongodb.Schema({
     username:{type:String,required:true,unique:true},
     password:{type:String,required:true},
@@ -18,6 +19,19 @@ const taskschemas=mongodb.Schema({
 })
 const todo=mongodb.model("todo",taskschemas);
 
+const notesschema=mongodb.Schema({
+    userId:{
+        type:mongodb.Types.ObjectId,
+        ref:user
+    },
+    notes:{
+        type:String,
+        required:true
+    }
+})
+const savednotes=mongodb.model("savednotes",notesschema);
+
+
 const validateinput=(data)=>{
    const Schema=joi.object({
     username:joi.string().required().label("username"),
@@ -29,6 +43,7 @@ const validateinput=(data)=>{
 module.exports=({
     user,
     validateinput,
-    todo
+    todo,
+    savednotes
     
 })

@@ -234,6 +234,7 @@ padding: -10px;
 }
 .delete{
   color: red;
+  cursor: pointer;
 }
 .image{
 width: 20px;

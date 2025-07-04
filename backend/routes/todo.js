@@ -41,6 +41,32 @@ if(existing){
 }
 })
 
+router.post('/delete',async(req,res)=>{
+    const { index , userId}=req.body;
+    parseFloat(index);
+    const exist=await todo.findOne({userId:new mongodb.Types.ObjectId(userId)})
+    if(!exist){
+        return(
+        res.json({
+            message:"unable to delete"
+        })
+    )
+    }
+       if(index>=0&&index<exist.content.length){
+        exist.content.splice(index, 1);
+        await exist.save();
+        res.json({
+            message:"deleted sucessfully",
+            content:exist.content
+        })
+       }
+       else{
+res.json({
+    message:"bhai out of control"
+})
+       }
+    
 
+})
 
 module.exports=router;

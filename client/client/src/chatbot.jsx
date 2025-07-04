@@ -1,3 +1,4 @@
+//peding need to store the history in the datebase
 import React, { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
@@ -41,7 +42,7 @@ export default function ChatBot() {
       >
         {messages.map((msg, i) => (
           <div key={i} style={{ textAlign: msg.sender === "user" ? "right" : "left" }}>
-            <b>{msg.sender}:</b> {msg.text}
+            <b>{msg.sender}:</b> {msg.text}  
           </div>
         ))}
       </div>

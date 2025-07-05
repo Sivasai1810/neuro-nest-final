@@ -21,11 +21,12 @@ e.preventDefault()
 try{
 const res=await  axios.post("http://localhost:2022/api/create",data)
 
-console.log(res.data.userId)
+ const userId=res.data.userId
+ localStorage.setItem("userId",userId);
 setMessage1(res.data.message)
 if(res.data.success){
     alert(res.data.message)
- navigate('/login')
+ navigate('/profile')
 }
 }
 catch(error){

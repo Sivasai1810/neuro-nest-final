@@ -64,19 +64,22 @@ const newfiles=Array.from(e.target.files)
   return (
     
     <div >
-      <p>WELCOME</p>
+      <div className='filesystem'> 
+      <p className='heading1'>WELCOME</p>
       <p>{message5}</p>
       <input type='file' 
+      className='file'
        webkitdirectory='true'
        multiple
        onChange={handleput}
-      />
-   <select>
+      /><br/>
+   <select className='list'>
    {files.map((filename,index)=>(
     <option key={index}>{filename.name}</option>
    ))}
-   </select>
+   </select><br/>
      <button type='submit'>upload file</button>
+     </div>
      <div className='rightbar'>
          <div className='stopwatch'>
        <Stop />

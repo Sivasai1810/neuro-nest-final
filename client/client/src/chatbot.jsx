@@ -3,7 +3,6 @@ import React, { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import Close from './assets/close.png'
-import Profile from "./profile";
 export default function ChatBot() {
   const navigate=useNavigate();
   const [input, setInput] = useState("");

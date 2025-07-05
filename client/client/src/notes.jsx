@@ -24,8 +24,8 @@ setNotes(e.target.value);
   return (
     <div>
         <h1 className='heading1'>Add-Notes </h1>
-      <textarea  onChange={handlenotes}className='textarea'value={notes} placeholder='says cheers'> </textarea>
-      <img className="closebar"src={close} alt="*"  onClick={()=>{navigate('/todo')}}/>
+      <textarea  onChange={handlenotes}className='textarea'value={notes} placeholder='says cheers'> </textarea><br/>
+      <button className="close"  onClick={()=>{navigate('/todo')}}> Close</button>
       <button  className='save' onClick={hadlesavenotes}>save</button>
     </div>
   )

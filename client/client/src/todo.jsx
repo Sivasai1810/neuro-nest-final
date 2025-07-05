@@ -7,7 +7,7 @@ function Todo() {
   const navigate=useNavigate();
   const [input, setInput] = useState("");    
   const [tasks, setTasks] = useState([
-    "yourtaskare"
+   
   ]);
     const userId=localStorage.getItem("userId");   
 useEffect( ()=>{
@@ -50,6 +50,7 @@ alert(res.data.message);
 window.location.reload();
 
 } 
+
   return (
     <div className='todo1'>
       <p className='heading1'>Todo-List</p>
@@ -57,6 +58,7 @@ window.location.reload();
         type='text' 
         value={input} 
         onChange={handleInputChange} 
+         onKeyDown={(e) => e.key === "Enter" && addTask(e)}
       /><br />
       <button className='add' onClick={addTask}>Add-Task</button>
    <table className="todo-table">

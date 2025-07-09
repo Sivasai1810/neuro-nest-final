@@ -1,18 +1,19 @@
-const express = require('express')
-const router = express.Router()
-const bcrypt=require("bcrypt")
-const joi=require("joi")
-const jwt=require("jsonwebtoken")
-const verifyToken=require('../middlewares/verify')
-const cookiepraser=require("cookie-parser")
-const {user}=require("../model/schema")
-const cors=require('cors')
+import express from 'express';
+const router = express.Router();
+import bcrypt from 'bcrypt';
+import joi from 'joi';
+import jwt from 'jsonwebtoken';
+import verifyToken from '../middlewares/verify.js';
+import cors from 'cors';
+import cookieParser from 'cookie-parser';
+import models from '../model/schema.js';
+const { user, validateinput } = models;
 router.use(express.json())
 // connectdb()
-router.use(cookiepraser())
+router.use(cookieParser())
 router.use(cors());
 const corsOptions = {
-  origin: 'http://localhost:5173', // or whatever your frontend origin is
+  origin: 'http://localhost:5173', 
   credentials: true,
 };
 router.use(cors(corsOptions));
@@ -84,6 +85,6 @@ const newinputs=(data)=>{
      return Schema.validate(data,{ abortEarly: false })
 
 }
-module.exports=router
+export  default router
 
 

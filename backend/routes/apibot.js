@@ -1,9 +1,11 @@
-require('dotenv').config();
-const express = require('express');
-const router=express.Router();
-const cors = require('cors');
-const bodyParser = require('body-parser');
-const axios = require('axios');
+import dotenv from 'dotenv';
+dotenv.config();
+import express from 'express';
+const router = express.Router();
+import cors from 'cors';
+import bodyParser from 'body-parser';
+import axios from 'axios';
+
 
 router.use(express.json());
 router.use(cors());
@@ -40,7 +42,7 @@ router.post('/', async (req, res) => {
     res.status(500).json({ reply: "API Error" });
   }
 });
-module.exports=router;
+export default router;
 
 
 

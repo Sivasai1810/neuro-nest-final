@@ -1,5 +1,5 @@
-const mongodb=require("mongoose")
-const joi=require("joi")
+import mongodb from "mongoose"
+import joi from "joi"
 
 const userschema=mongodb.Schema({
     username:{type:String,required:true,unique:true},
@@ -30,7 +30,10 @@ const notesschema=mongodb.Schema({
     }
 })
 const savednotes=mongodb.model("savednotes",notesschema);
-
+const folderSchema=mongodb.Schema({
+    url:{type:String}
+})
+const folderurl=mongodb.model('folderurl',folderSchema);
 
 const validateinput=(data)=>{
    const Schema=joi.object({
@@ -40,10 +43,11 @@ const validateinput=(data)=>{
    })
    return Schema.validate(data,{ abortEarly: false })
 }
-module.exports=({
+export default{
     user,
     validateinput,
     todo,
-    savednotes
+    savednotes,
+    folderurl
     
-})
+}

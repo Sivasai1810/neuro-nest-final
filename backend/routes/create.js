@@ -1,8 +1,9 @@
-const express = require('express')
+import express from 'express';
+import bcrypt from 'bcrypt';
+import cors from 'cors';
+import models from '../model/schema.js';
+const { user, validateinput } = models;
 const router = express.Router();
-const bcrypt=require("bcrypt")
-const cors=require("cors")
-const {user,validateinput}=require("../model/schema");
 router.use(express.json())
 router.use(cors())
 router.post('/', async (req, res) =>{
@@ -48,4 +49,4 @@ catch(error){
         // console.log("the error is",error)
     }
 })
-module.exports=router
+export default router;

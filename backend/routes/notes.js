@@ -1,8 +1,9 @@
-const express = require('express')
+import express from 'express';
 const router = express.Router();
-const cors=require("cors")
-const mongodb=require("mongoose")
-const { savednotes } =require("../model/schema");
+import cors from 'cors';
+import mongodb from 'mongoose';
+import models from '../model/schema.js';
+const { savednotes } = models;
 router.use(express.json())
 router.use(cors())
 router.post('/',async (req,res)=>{
@@ -33,4 +34,4 @@ catch(error){
 }
 
 })
-module.exports=router
+export default router;

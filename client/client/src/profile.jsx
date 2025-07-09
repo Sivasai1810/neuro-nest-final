@@ -1,9 +1,8 @@
 import React, { useState } from 'react'
 import { useNavigate }from 'react-router-dom'
 import Stop from './stopwatch'
-import Todo from './todo'
 import Botimage from './assets/bot.png'
-import ChatBot from './chatbot'
+import axios from 'axios'
 
 const profile =()=> {
   const navigation=useNavigate();
@@ -25,9 +24,8 @@ const profile =()=> {
 //    }
 
   const handleput=(e)=>{
-console.log(e.target.files)
+     
 const newfiles=Array.from(e.target.files)
- console.log(newfiles[0].name)
  setFiles((files)=>[...files,...newfiles])
 }
 
@@ -42,24 +40,24 @@ const newfiles=Array.from(e.target.files)
 
 
 
-//    const handlepush=async(e)=>{
-// e.preventDefault()
-// const formdata=new FormData()
-//     files.forEach((file)=>{
-// formdata.append("myfiles",file)
-//     })
-//     try{
-//       const res=await axios.post('',formdata,{
-//         headers:{
-//           "Content-Type":"multipart/form-data"
-//         }
-//       })
-//       console.log(res.data.message)
-//       alert("uploaded sucessfully")
-//     }catch(error){
-//       console.log("error",error)
-//     }
-//    }
+   const handlepush=async(e)=>{
+e.preventDefault()
+const formdata=new FormData()
+    files.forEach((file)=>{
+formdata.append("myfiles",file)
+    })
+    try{
+      const res=await axios.post('http://localhost:2022/pdf',formdata,{
+        headers:{
+          "Content-Type":"multipart/form-data"
+        }
+      })
+      console.log(res.data.message)
+      alert("uploaded sucessfully")
+    }catch(error){
+      console.log("error",error)
+    }
+   }
 
   return (
     
@@ -78,7 +76,7 @@ const newfiles=Array.from(e.target.files)
     <option key={index}>{filename.name}</option>
    ))}
    </select><br/>
-     <button type='submit'>upload file</button>
+ <button onClick={handlepush}>upload</button>
      </div>
      <div className='rightbar'>
          <div className='stopwatch'>

@@ -1,8 +1,9 @@
-const express=require('express')
-const router=express.Router();
-const cors=require('cors');
-const  mongodb=require('mongoose');
-const { todo }=require('../model/schema');
+import express from 'express';
+const router = express.Router();
+import cors from 'cors';
+import mongodb from 'mongoose';
+import models from '../model/schema.js';
+const { todo } = models; 
 router.use(express.json());
 router.use(cors());
 
@@ -69,4 +70,4 @@ res.json({
 
 })
 
-module.exports=router;
+export default router

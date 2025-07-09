@@ -1,0 +1,41 @@
+import express from "express";
+import multer from "multer";
+import AWS from "aws-sdk";
+import dotenv from 'dotenv';
+import model from '../model/schema.js'
+const { folderurl }=model;
+dotenv.config();
+const router=express.Router();
+router.use(express.json());
+const s3 = new AWS.S3({
+    accessKeyId:process.env.AWS_ACCESS_KEY_ID,
+    secretAccessKey:process.env.AWS_SECRET_ACCESS_KEY,
+    region:process.env.AWS_REGION
+})
+const storage = multer.memoryStorage();
+const upload = multer({ storage });
+
+ router.post('/',upload.array("myfiles"), async(req,res)=>{
+    try{
+   for (const file of req.files) { 
+  const params = {
+    Bucket: process.env.AWS_S3_BUCKET,
+    Key: `uploads/${Date.now()}-${file.originalname}`,
+    Body: file.buffer,
+    ContentType: file.mimetype,
+   
+  };
+ const result=await s3.upload(params).promise();
+ const newurl=new folderurl({
+    url:result.Location 
+ })
+  await newurl.save();
+
+  res.json({message:"files uploaded sucessfully"})
+   }
+}catch(error){
+    console.log("internal server error",error);
+}
+ })
+
+export default router;

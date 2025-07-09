@@ -1,5 +1,6 @@
-require('dotenv').config()
-const jwt=require("jsonwebtoken")
+import dotenv from 'dotenv';
+import jwt from 'jsonwebtoken';
+dotenv.config();
 const jwt_secure=process.env.JWT_PASSWORD
 const verify= async(req,res,next)=>{
 const accessToken=req.cookies.accessToken
@@ -50,7 +51,7 @@ next()
 
  }
  
-module.exports = verify;
+export default  verify;
 // require('dotenv').config();
 // const jwt = require('jsonwebtoken');
 // const jwt_secure = process.env.JWT_PASSWORD;

@@ -260,8 +260,8 @@ button:hover,
 
 .bot {
   position: fixed;
-  top: 55px;
-  right: 400px;
+  top: 555px;
+  right: 30px;
   border: 2px solid var(--accent);
   border-radius: 12px;
   padding: 8px;
@@ -336,4 +336,69 @@ button:hover,
 .file:hover {
   background-color: #2563eb;
   color: #fff;
+}
+.pdfsection{
+position: fixed;
+top: 20px;
+left: 10px;
+background-color: green;
+width: 65%;
+
+}
+.pdftable {
+  position: fixed;
+  top: 0;
+  left: 3px;
+  transform: translateX(-0.5px);
+  width: 70%;
+  height: 100vh;
+  border: 2px solid wheat;
+  border-radius: 12px;
+  background-color: #0d1117; /* subtle background for content */
+  padding: 12px;
+  overflow-y: auto;
+  z-index: 1;
+  box-shadow: 0 0 12px rgba(255, 255, 255, 0.05);
+}
+
+/* Responsive width for mobile */
+@media screen and (max-width: 768px) {
+  .pdftable {
+    width: 90%;
+  }
+}
+
+.fileth {
+  background-color: #1e1e2f; 
+  color: white;
+  font-weight: 500;
+  padding: 5px 8px;
+  margin: 1px;
+  border-radius: 6px;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+  border: solid 1px wheat;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.2s;
+
+}
+
+.fileth:hover {
+ background-color: #3a3a8c; 
+  transform: scale(1.05);
+}
+
+.cross {
+  background-color: transparent;
+  border: none;
+  color: white;
+  font-size: 14px;
+  cursor: pointer;
+  transition: color 0.2s;
+}
+
+.cross:hover {
+  color: #ffdddd;
 }

@@ -3,13 +3,16 @@ import { useNavigate }from 'react-router-dom'
 import Stop from './stopwatch'
 import Botimage from './assets/bot.png'
 import axios from 'axios'
-import path from 'path'
+
 
 const profile =()=> {
   const userId=localStorage.getItem("userId");
   const[files,setFiles]=useState([])
  const [selectedfiletype,setFiletype]=useState("");
  const [selectedfileurl,setFileurl]=useState("");
+  const [listfiles,setListfiles]=useState([]);
+  const [isInitialLoad, setIsInitialLoad] = useState(true);
+     const [openedfiles,setOpenedfiles]=useState([]);
   useEffect(()=>{
 const getlist=async()=>{
   const res= await axios.post("http://localhost:2022/alignpdf",{
@@ -17,15 +20,25 @@ const getlist=async()=>{
   })
  let listoffiles=res.data.message;
    setFiles(()=>[...listoffiles])
-}
-
-
-  getlist();
+} 
+ getlist();
 },[])
+useEffect(()=>{
+ const newlist=JSON.parse(localStorage.getItem("fileslist"));
+ if (newlist) {
+    setOpenedfiles(newlist); 
+  }
+  setIsInitialLoad(false);
+},[])
+useEffect(()=>{
+ if (!isInitialLoad) {
+    localStorage.setItem("fileslist", JSON.stringify(openedfiles));
+  }
+},[openedfiles,isInitialLoad])
+
   const navigation=useNavigate();
   
  const fileInputRef=useRef(null);
- const [listfiles,setListfiles]=useState([]);
    const [message5,setMessage5]=useState('')
   const handleput=async(e)=>{
 const newfiles=Array.from(e.target.files)
@@ -83,18 +96,35 @@ const handleshow = async(index) => {
   try{
   const response=await axios.get(`http://localhost:2022/get-signed-url?index=${index}&&userId=${userId}`)
   const url=response.data.url;
-console.log(url)
  const newwindow= window.open('',"_self");
  const pathname=new URL(url).pathname;
- const filename=pathname.split(" ").pop().toLowerCase();
-  setFiletype(filename);
+ const filename=pathname.split("/").pop()
+ const extension=filename.split(".").pop().toLocaleLowerCase();
+  setFiletype(extension);
   setFileurl(url);
+const newfilename=filename.split("-").slice(1).join("-").split(".").slice(0,-1).join('.').slice(0,30);
+     setOpenedfiles((openedfiles)=>[
+      ...openedfiles,
+      {
+        url:url,
+        filesname:newfilename,
+        type:extension
+      }
+     ])
+  //}
   }catch(error){
     console.log("error",error);
      alert("Unable to load file.");
   }
 };
-     
+const handleremove=(indexToRemove)=>{
+    const updated = openedfiles.filter((_, index) => index !== indexToRemove);
+ setOpenedfiles(updated);
+}
+const handleideal=()=>{
+  console.log("ah abhi ha")
+}
+  
   return (
     
     <div >
@@ -131,15 +161,18 @@ console.log(url)
    ))}
    </select><br/>
    </div> 
-   <div className='pdfsection'style={{ display: 'flex', height: '100vh' }}>
+   {/* <div className='pdfsection'style={{ display: 'flex', height: '100vh' }}>
+ 
    { selectedfileurl ?(
     selectedfiletype.includes('pdf')?(
       <iframe
+      className='pdffile'
       src={selectedfileurl} 
        title="PDF Preview"
       ></iframe>
     ):(
       <img
+      className='imagefile'
       src={selectedfileurl}
       alt="preview"
 
@@ -149,6 +182,18 @@ console.log(url)
     )
 
    }
+   </div> */}
+   <div className='pdftable'>
+   <table >
+    <thead>
+      <tr className='fileth'>
+        {openedfiles.map((filedata,index)=>(
+       <th onClick={handleideal} className='fileth' key={index}>{filedata. filesname}
+       <span onClick={()=>handleremove(index)} className='cross'> ❌</span></th>
+        ))}
+      </tr>
+    </thead>
+   </table>
    </div>
 </div>
   )

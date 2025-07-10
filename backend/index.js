@@ -11,9 +11,10 @@ import apibot from './routes/apibot.js';
 import todo from './routes/todo.js';
 import notes from './routes/notes.js';
 import pdf from './routes/pdf.js';
-
+import folder from './routes/folders.js';
+import storename from './routes/storename.js'
+import showpdfs from './routes/showpdfs.js'
 dotenv.config();
-
 const app = express();
 
 app.use(cors({
@@ -33,6 +34,9 @@ try {
   app.use('/todo', todo); 
   app.use('/notes', notes);
   app.use('/pdf', pdf);
+  app.use('/get-signed-url',folder);
+  app.use('/callingfiles',storename);
+  app.use('/alignpdf',showpdfs)
   console.log("somthingggggggg is wrong ");
 } catch (error) {
   console.log("somthin is wrong ", error);

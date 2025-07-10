@@ -23,6 +23,7 @@ fetchdata();
     setInput(e.target.value);
   };
   const addTask = async(e) => {
+    console.log("hello");
     try{
 e.preventDefault()
   const res = await axios.post("http://localhost:2022/todo", {

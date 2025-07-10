@@ -31,10 +31,25 @@ const notesschema=mongodb.Schema({
 })
 const savednotes=mongodb.model("savednotes",notesschema);
 const folderSchema=mongodb.Schema({
-    url:{type:String}
+    userId:{type:mongodb.Types.ObjectId,
+        ref:user
+    },
+    url:{type:[String],
+        default:[]
+    }
 })
 const folderurl=mongodb.model('folderurl',folderSchema);
-
+const filename=new mongodb.Schema({
+    userId:{
+        type:mongodb.Types.ObjectId,
+        ref:user
+    },
+    list:{
+        type:[String],
+        default:[]
+    }
+})
+const filelist=mongodb.model("filelist",filename);
 const validateinput=(data)=>{
    const Schema=joi.object({
     username:joi.string().required().label("username"),
@@ -48,6 +63,7 @@ export default{
     validateinput,
     todo,
     savednotes,
-    folderurl
+    folderurl,
+    filelist
     
 }

@@ -6,7 +6,7 @@ const { user, validateinput } = models;
 const router = express.Router();
 router.use(express.json())
 router.use(cors({
-  origin: 'http://localhost:5173',
+  origin: 'https://neuro-nest-2.onrender.com',
   credentials: true
 }));
 

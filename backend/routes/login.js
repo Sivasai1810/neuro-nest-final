@@ -12,11 +12,22 @@ router.use(express.json())
 // connectdb()
 router.use(cookieParser())
 router.use(cors());
-const corsOptions = {
-  origin: 'https://neuro-nest-2.onrender.com', 
-  credentials: true,
-};
-router.use(cors(corsOptions));
+const allowedOrigins = [
+  'https://neuro-nest-2.onrender.com',
+  'http://localhost:5173'
+];
+
+router.use(cors({
+  origin: function (origin, callback) {
+    if (!origin || allowedOrigins.includes(origin)) {
+      callback(null, true);
+    } else {
+      callback(new Error('Not allowed by CORS'));
+    }
+  },
+  credentials: true
+}));
+
 const jwt_secret=process.env.JWT_PASSWORD
 router.post('/', async (req, res)=>{
     try{

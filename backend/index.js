@@ -16,9 +16,19 @@ import storename from './routes/storename.js'
 import showpdfs from './routes/showpdfs.js'
 dotenv.config();
 const app = express();
+const allowedOrigins = [
+  'https://neuro-nest-2.onrender.com',
+  'http://localhost:5173'
+];
 
 app.use(cors({
-  origin: 'https://neuro-nest-2.onrender.com',
+  origin: function (origin, callback) {
+    if (!origin || allowedOrigins.includes(origin)) {
+      callback(null, true);
+    } else {
+      callback(new Error('Not allowed by CORS'));
+    }
+  },
   credentials: true
 }));
 

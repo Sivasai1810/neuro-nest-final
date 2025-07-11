@@ -5,10 +5,22 @@ import models from '../model/schema.js';
 const { user, validateinput } = models;
 const router = express.Router();
 router.use(express.json())
+const allowedOrigins = [
+  'https://neuro-nest-2.onrender.com',
+  'http://localhost:5173'
+];
+
 router.use(cors({
-  origin: 'https://neuro-nest-2.onrender.com',
+  origin: function (origin, callback) {
+    if (!origin || allowedOrigins.includes(origin)) {
+      callback(null, true);
+    } else {
+      callback(new Error('Not allowed by CORS'));
+    }
+  },
   credentials: true
 }));
+
 
 router.post('/', async (req, res) =>{
     console.log("ayya ami ayyidhi ayya")

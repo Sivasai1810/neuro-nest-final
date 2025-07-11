@@ -16,7 +16,7 @@ export default function ChatBot() {
     setInput("");
 
     try {
-      const res = await axios.post("http://localhost:2022/gemini", {
+      const res = await axios.post("https://neuro-nest.onrender.com/gemini", {
         message: input,
       });
 

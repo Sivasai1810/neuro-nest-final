@@ -9,7 +9,7 @@ export default function Notes() {
       const userId=localStorage.getItem("userId");
 
       const hadlesavenotes=async()=>{
-const res=await axios.post("http://localhost:2022/notes",{
+const res=await axios.post("https://neuro-nest.onrender.com/notes",{
  userId,
  notes}
 )

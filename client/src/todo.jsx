@@ -12,7 +12,7 @@ function Todo() {
     const userId=localStorage.getItem("userId");   
 useEffect( ()=>{
   const fetchdata=async()=>{
-  const res=await axios.get(`http://localhost:2022/todo/get?userId=${userId}`);
+  const res=await axios.get(`https://neuro-nest.onrender.com/todo/get?userId=${userId}`);
   const textarea=res.data.usertext;
   setTasks(textarea);
  
@@ -26,7 +26,7 @@ fetchdata();
     console.log("hello");
     try{
 e.preventDefault()
-  const res = await axios.post("http://localhost:2022/todo", {
+  const res = await axios.post("https://neuro-nest.onrender.com/todo", {
           userId: userId,
           tasks: input
         });
@@ -42,7 +42,7 @@ e.preventDefault()
 }
   }
 const deleteTask=async(index)=>{
-const res=await axios.post("http://localhost:2022/todo/delete",{
+const res=await axios.post("https://neuro-nest.onrender.com/todo/delete",{
   userId,
   index
 

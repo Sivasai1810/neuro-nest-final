@@ -27,7 +27,7 @@ if (isFirstRun.current) {
      },[userId])
   useEffect(()=>{
 const getlist=async()=>{
-  const res= await axios.post("http://localhost:2022/alignpdf",{
+  const res= await axios.post("https://neuro-nest.onrender.com/alignpdf",{
     userId:userId
   })
  let listoffiles=res.data.message;
@@ -70,7 +70,7 @@ if (files.length === 0) {
       return;
     }
   try{
- const callingRes= await axios.post("http://localhost:2022/callingfiles",{
+ const callingRes= await axios.post("https://neuro-nest.onrender.com/callingfiles",{
   userId:userId,
   name:listfiles
   
@@ -86,7 +86,7 @@ const formdata=new FormData()
 formdata.append("myfiles",file)
     })
   formdata.append("userId",userId);
-    const res=await axios.post('http://localhost:2022/pdf',formdata,{
+    const res=await axios.post('https://neuro-nest.onrender.com/pdf',formdata,{
         headers:{
           "Content-Type":"multipart/form-data"
         }
@@ -108,7 +108,7 @@ await awscall(e);
    }
 const handleshow = async(index) => {
   try{
-  const response=await axios.get(`http://localhost:2022/get-signed-url?index=${index}&&userId=${userId}`)
+  const response=await axios.get(`https://neuro-nest.onrender.com/get-signed-url?index=${index}&&userId=${userId}`)
   const url=response.data.url;
  const newwindow= window.open('',"_self");
  const pathname=new URL(url).pathname;
@@ -176,28 +176,6 @@ const handleideal=(index,url,type)=>{
    ))}
    </select><br/>
    </div> 
-   {/* <div className='pdfsection'style={{ display: 'flex', height: '100vh' }}>
- 
-   { selectedfileurl ?(
-    selectedfiletype.includes('pdf')?(
-      <iframe
-      className='pdffile'
-      src={selectedfileurl} 
-       title="PDF Preview"
-      ></iframe>
-    ):(
-      <img
-      className='imagefile'
-      src={selectedfileurl}
-      alt="preview"
-
-      />
-    )):(
-      <p> no files selected</p>
-    )
-
-   }
-   </div> */}
    <div className='pdftable'>
    <table >
     <thead>

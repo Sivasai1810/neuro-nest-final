@@ -19,7 +19,7 @@ const handlepush=(e)=>{
 const handleroute= async(e)=>{
 e.preventDefault()
 try{
-const res=await  axios.post("http://localhost:2022/api/create",data)
+const res=await  axios.post("https://neuro-nest.onrender.com/api/create",data)
 
  const userId=res.data.userId
  localStorage.setItem("userId",userId);

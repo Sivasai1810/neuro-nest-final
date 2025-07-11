@@ -20,7 +20,6 @@ router.post('/', upload.array("myfiles"), async (req, res) => {
 
     const userId = req.body.userId;
     let uploadedUrls=[];
-    console.log("hello from the pdf bbhai")
     for (const file of req.files) {
       const params = {
         Bucket: process.env.AWS_S3_BUCKET,
@@ -47,11 +46,11 @@ uploadedUrls.push(result.Location);
       await newurl.save();
     }
 
-    res.json({ message: "Files uploaded successfully", files: uploadedUrls });
+    res.json({ message: "Files uploaded successfully", files: uploadedUrls,status:true });
 
   } catch (error) {
     console.error("Upload error:", error);
-    res.status(500).json({ message: "Internal server error" });
+    res.status(500).json({ message: "Internal server error", status:false });
   }
 });
 

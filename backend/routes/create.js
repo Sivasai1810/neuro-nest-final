@@ -5,8 +5,13 @@ import models from '../model/schema.js';
 const { user, validateinput } = models;
 const router = express.Router();
 router.use(express.json())
-router.use(cors())
+router.use(cors({
+  origin: 'http://localhost:5173',
+  credentials: true
+}));
+
 router.post('/', async (req, res) =>{
+    console.log("ayya ami ayyidhi ayya")
     try{
     const {username,password,email}=req.body
     const { error }=validateinput(req.body)

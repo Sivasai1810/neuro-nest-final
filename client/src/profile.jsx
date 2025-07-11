@@ -3,16 +3,28 @@ import { useNavigate }from 'react-router-dom'
 import Stop from './stopwatch'
 import Botimage from './assets/bot.png'
 import axios from 'axios'
-
-
 const profile =()=> {
   const userId=localStorage.getItem("userId");
+const isFirstRun = useRef(true);
   const[files,setFiles]=useState([])
  const [selectedfiletype,setFiletype]=useState("");
  const [selectedfileurl,setFileurl]=useState("");
   const [listfiles,setListfiles]=useState([]);
   const [isInitialLoad, setIsInitialLoad] = useState(true);
      const [openedfiles,setOpenedfiles]=useState([]);
+     useEffect(()=>{
+if (isFirstRun.current) {
+      isFirstRun.current = false; 
+      return;
+    }
+
+      const getCallSites=()=>{
+  console.log("malli vacha")
+  setOpenedfiles([""])
+      }
+      
+        getCallSites()
+     },[userId])
   useEffect(()=>{
 const getlist=async()=>{
   const res= await axios.post("http://localhost:2022/alignpdf",{
@@ -81,7 +93,9 @@ formdata.append("myfiles",file)
       })
       console.log("upload response:", res.data);
       alert("uploaded sucessfully")
-    
+    if(res.data.status===false){
+      setFiles(" ")
+    }
       setListfiles([]);
       setMessage5("Upload completed!");
     }catch(error){
@@ -121,8 +135,9 @@ const handleremove=(indexToRemove)=>{
     const updated = openedfiles.filter((_, index) => index !== indexToRemove);
  setOpenedfiles(updated);
 }
-const handleideal=()=>{
-  console.log("ah abhi ha")
+const handleideal=(index,url,type)=>{
+   setFileurl(url)
+   setFiletype(type);
 }
   
   return (
@@ -188,31 +203,40 @@ const handleideal=()=>{
     <thead>
       <tr className='fileth'>
         {openedfiles.map((filedata,index)=>(
-       <th onClick={handleideal} className='fileth' key={index}>{filedata. filesname}
+       <th onClick={()=>handleideal(index,filedata.url ,filedata.type)} className='fileth' key={index}>{filedata. filesname}
        <span onClick={()=>handleremove(index)} className='cross'> ❌</span></th>
         ))}
       </tr>
     </thead>
    </table>
+     <div className='pdfsection'>
+    
+    {
+    
+      selectedfileurl ?(
+        selectedfiletype==='pdf'?(
+          <iframe
+          className='pdftab'
+          src={selectedfileurl}
+          title="PDF Preview"
+          >
+          </iframe>
+        ):(
+          <img
+          className='pdftab1'
+          src={selectedfileurl}
+          alt='preview'>
+          </img>
+        )
+      ):(
+        <p> no files are selected</p>
+      )
+    }
    </div>
+   </div>
+ 
 </div>
   )
 }
 
 export default profile
-// // selectedFileType === 'pdf' ? (
-//         <iframe
-//           src={selectedFileUrl}
-//           width="100%"
-//           height="100%"
-//           style={{ border: 'none', minHeight: '90vh' }}
-//           title="PDF Preview"
-//         />
-//       ) : (
-//         <img
-//           src={selectedFileUrl}
-//           alt="Preview"
-//           style={{ maxWidth: '100%', maxHeight: '90vh', objectFit: 'contain' }}
-//         />
-//       )
-//     )

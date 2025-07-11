@@ -30,7 +30,7 @@ const s3key = decodeURIComponent(new URL(fileurl).pathname.slice(1));
 const params={
     Bucket:process.env.AWS_S3_BUCKET,
     Key:s3key,
-     Expires: 60
+     Expires: 60*60
 
 }
 

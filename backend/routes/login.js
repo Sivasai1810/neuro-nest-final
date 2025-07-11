@@ -3,7 +3,6 @@ const router = express.Router();
 import bcrypt from 'bcrypt';
 import joi from 'joi';
 import jwt from 'jsonwebtoken';
-import verifyToken from '../middlewares/verify.js';
 import cors from 'cors';
 import cookieParser from 'cookie-parser';
 import models from '../model/schema.js';
@@ -66,14 +65,14 @@ const refreshToken= jwt.sign(playload,jwt_secret,{
 })
 res.cookie("accessToken",accessToken,{
     httpOnly:true,
-    secure:false,
-    sameSite:"Lax",
+    secure:true,
+    sameSite:"none",
     maxAge:30*60*1000
 })
 res.cookie("refreshToken",refreshToken,{
  httpOnly:true,
-    secure:false,
-    sameSite:"Lax",
+    secure:true,
+    sameSite:"none",
     maxAge:30*60*1000
 })
 

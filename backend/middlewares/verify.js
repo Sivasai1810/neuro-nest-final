@@ -39,7 +39,7 @@ if(error){
    res.cookie("accessToken",newToken,{
     httpOnly: true,
     maxAge: 15 * 60 * 1000,
-    sameSite: "Lax",
+    sameSite: "none",
     secure: true
    })
    req.username=decoded.username

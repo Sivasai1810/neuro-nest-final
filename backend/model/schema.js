@@ -28,6 +28,7 @@ const notesschema=mongodb.Schema({
         type:String,
         required:true
     }
+  
 })
 const savednotes=mongodb.model("savednotes",notesschema);
 const folderSchema=mongodb.Schema({

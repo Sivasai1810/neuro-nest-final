@@ -229,7 +229,7 @@ const handleideal=(index,url,type)=>{
           </img>
         )
       ):(
-        <p> no files are selected</p>
+        <h1> no files are selected</h1>
       )
     }
    </div>

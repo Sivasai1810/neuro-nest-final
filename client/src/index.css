@@ -352,7 +352,7 @@ height: 100%;
   top: 0;
   left: 3px;
   transform: translateX(-0.5px);
-  width: 70%;
+  width: 65%;
   height: 100vh;
   border: 2px solid wheat;
   border-radius: 12px;
@@ -363,7 +363,6 @@ height: 100%;
   box-shadow: 0 0 12px rgba(255, 255, 255, 0.05);
 }
 
-/* Responsive width for mobile */
 @media screen and (max-width: 768px) {
   .pdftable {
     width: 90%;
@@ -405,6 +404,7 @@ height: 100%;
 
 .cross:hover {
   color: #ffdddd;
+  border: dashed 1px white;
 }
 .pdftab{
   width: 150%;

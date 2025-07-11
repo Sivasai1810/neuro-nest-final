@@ -51,6 +51,9 @@ alert(res.data.message);
 window.location.reload();
 
 } 
+const handlenotes=(index)=>{
+ navigate('/notes')
+}
 
   return (
     <div className='todo1'>
@@ -74,7 +77,7 @@ window.location.reload();
     {tasks.map((task, index) => (
       <tr key={index}>
         <td>{task}</td>
-        <td className='image'><img  src={plus} alt="+"  onClick={()=>{navigate('/notes')}}/></td>
+        <td className='image'><img  src={plus} alt="+"  onClick={()=>handlenotes(index)}/></td>
         <td className='image'><button  className='delete'onClick={() => deleteTask(index)}>Delete</button></td>
       </tr>
     ))}

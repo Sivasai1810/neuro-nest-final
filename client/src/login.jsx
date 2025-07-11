@@ -10,6 +10,7 @@ const [data,setData]=useState({
 })
 const [message1,setMessage1]=useState("")
 const handlepush=(e)=>{
+  setMessage1("")
     setData((d)=>({
   ...d,
   [e.target.name]:e.target.value
@@ -23,11 +24,13 @@ const res=await  axios.post("http://localhost:2022/api/login",data,{
 })
 setMessage1(res.data.message)
 localStorage.setItem("userId",res.data.userId);
+setData({
+   username:"",
+    password:"",
+})
 if (res.data.success === true) {
-
   alert(res.data.message);
   navigate('/profile');
-  console.log(message1)
 
 }
 }

@@ -8,17 +8,12 @@ router.use(express.json())
 router.use(cors())
 router.post('/',async (req,res)=>{
     try{
+        const index=localStorage.getItem("notesindex")
 const {userId,notes}=req.body;
-// const exist=await savednotes.findOne({userId:new mongodb.Types.ObjectId(userId)})
-// if(exist){
-//     res.json({
-//         message:exist.notes,
-//         success:true
-//     })
-// }
 const newnotes=new savednotes({
     userId:new mongodb.Types.ObjectId(userId),
-    notes:notes
+    notes:notes,
+    index:index
 
 })
 res.json({

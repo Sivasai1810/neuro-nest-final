@@ -6,7 +6,7 @@ const { user, validateinput } = models;
 const router = express.Router();
 router.use(express.json())
 const allowedOrigins = [
-  'https://neuro-nest-1.onrender.com',
+  "https://neuro-nest-final-1.onrender.com",
   'http://localhost:5173'
 ];
 

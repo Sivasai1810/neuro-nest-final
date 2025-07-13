@@ -5,7 +5,21 @@ import mongodb from 'mongoose';
 import models from '../model/schema.js';
 const { savednotes } = models;
 router.use(express.json())
-router.use(cors())
+const allowedOrigins = [
+  "https://neuro-nest-final-1.onrender.com",
+  'http://localhost:5173'
+];
+
+router.use(cors({
+  origin: function (origin, callback) {
+    if (!origin || allowedOrigins.includes(origin)) {
+      callback(null, true);
+    } else {
+      callback(new Error('Not allowed by CORS'));
+    }
+  },
+  credentials: true
+}));
 router.post('/',async (req,res)=>{
     try{
         const index=localStorage.getItem("notesindex")

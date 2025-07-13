@@ -4,8 +4,24 @@ import AWS from 'aws-sdk';
 import dotenv from 'dotenv'
 const router=express.Router();
 import model from '../model/schema.js'
+import cors from 'cors'
 const { folderurl } =model
 router.use(express.json())
+const allowedOrigins = [
+  "https://neuro-nest-final-1.onrender.com",
+  'http://localhost:5173'
+];
+
+router.use(cors({
+  origin: function (origin, callback) {
+    if (!origin || allowedOrigins.includes(origin)) {
+      callback(null, true);
+    } else {
+      callback(new Error('Not allowed by CORS'));
+    }
+  },
+  credentials: true
+}));
 dotenv.config();
 const s3=new AWS.S3({
         accessKeyId:process.env.AWS_ACCESS_KEY_ID,

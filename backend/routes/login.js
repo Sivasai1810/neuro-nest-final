@@ -10,9 +10,8 @@ const { user, validateinput } = models;
 router.use(express.json())
 // connectdb()
 router.use(cookieParser())
-router.use(cors());
 const allowedOrigins = [
- 'https://neuro-nest-1.onrender.com',
+  "https://neuro-nest-final-1.onrender.com",
   'http://localhost:5173'
 ];
 

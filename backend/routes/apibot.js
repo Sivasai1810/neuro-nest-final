@@ -5,10 +5,22 @@ const router = express.Router();
 import cors from 'cors';
 import bodyParser from 'body-parser';
 import axios from 'axios';
-
-
 router.use(express.json());
-router.use(cors());
+const allowedOrigins = [
+  "https://neuro-nest-final-1.onrender.com",
+  'http://localhost:5173'
+];
+
+router.use(cors({
+  origin: function (origin, callback) {
+    if (!origin || allowedOrigins.includes(origin)) {
+      callback(null, true);
+    } else {
+      callback(new Error('Not allowed by CORS'));
+    }
+  },
+  credentials: true
+}));
 router.use(bodyParser.json());
 
 const OPENROUTER_API_KEY = process.env.OPENROUTER_API_KEY;

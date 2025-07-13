@@ -4,7 +4,6 @@ import AWS from 'aws-sdk';
 import dotenv from 'dotenv'
 const router=express.Router();
 import model from '../model/schema.js'
-import { hrtime } from 'process';
 const { folderurl } =model
 router.use(express.json())
 dotenv.config();
@@ -15,7 +14,7 @@ const s3=new AWS.S3({
     signatureVersion: 'v4'
 })
 router.get('/', async(req,res)=>{
-    console.log("ok ok");
+   
 const {userId,index} =req.query;
 const exist=await folderurl.findOne({userId: new mongoose.Types.ObjectId(userId)})
 try{

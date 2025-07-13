@@ -8,7 +8,7 @@ export default function Notes() {
       const userId=localStorage.getItem("userId");
 const todoindex=localStorage.getItem("todoindex")
       const hadlesavenotes=async()=>{
-const res=await axios.post("https://neuro-nest.onrender.com/notes",{
+const res=await axios.post("https://neuro-nest-final.onrender.com/notes",{
  userId,
  todoindex
 }

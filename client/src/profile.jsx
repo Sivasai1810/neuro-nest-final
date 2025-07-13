@@ -58,7 +58,7 @@ formdata.append("myfiles",file)
   //http://localhost:2022
   //'https://neuro-nest.onrender.com
   //https://neuro-nest.onrender.com
-    const res=await axios.post('http://localhost:2022/pdf',formdata,{
+    const res=await axios.post('https://neuro-nest-final.onrender.com/pdf',formdata,{
         headers:{
           "Content-Type":"multipart/form-data"
         }
@@ -85,7 +85,7 @@ const handleshow = async(index) => {
   try{
     //https://neuro-nest.onrender.com
     console.log(index)
-  const response=await axios.get(`http://localhost:2022/get-signed-url?index=${index}&&userId=${userId}`)
+  const response=await axios.get(`https://neuro-nest-final.onrender.com/get-signed-url?index=${index}&&userId=${userId}`)
   const url=response.data.url;
  const newwindow= window.open('',"_self");
  const pathname=new URL(url).pathname;

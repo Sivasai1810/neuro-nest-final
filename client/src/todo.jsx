@@ -19,6 +19,8 @@ useEffect( ()=>{
 }
 fetchdata();
 },[]) 
+console.log("testing change");
+
   const handleInputChange = (e) => {
     setInput(e.target.value);
   };

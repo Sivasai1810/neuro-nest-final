@@ -23,7 +23,7 @@ const res=await  axios.post("https://neuro-nest.onrender.com/api/create",data)
 
  const userId=res.data.userId
  localStorage.setItem("userId",userId);
-setMessage1(res.data.error)
+setMessage1(res.data.message)
 if(res.data.success){
     alert(res.data.message)
  navigate('/profile')

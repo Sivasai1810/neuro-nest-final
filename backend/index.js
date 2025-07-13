@@ -17,7 +17,7 @@ import showpdfs from './routes/showpdfs.js'
 dotenv.config();
 const app = express();
 const allowedOrigins = [
-  'https:neuro-nest-1.onrender.com/',
+  'https:neuro-nest-1.onrender.com',
   'http://localhost:5173'
 ];
 

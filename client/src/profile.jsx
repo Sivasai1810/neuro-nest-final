@@ -14,14 +14,13 @@ const [selectedfileurl,setFileurl]=useState("");
   const isLoad=useRef(true);
 useEffect(()=>{
   if(isLoad.current===false){
-localStorage.setItem("__fi_list",JSON.stringify(listfiles));
-localStorage.setItem("filesdetials",JSON.stringify(openedfiles));
+ const list=localStorage.setItem("__fi_list",JSON.stringify(listfiles));
 }
 },[listfiles,isLoad,openedfiles])
 useEffect(()=>{
  const list=JSON.parse(localStorage.getItem("__fi_list"));
-setListfiles(list)
-const file_list=JSON.parse(localStorage.getItem("filesdetials"))
+setListfiles(list || []); 
+//const file_list=JSON.parse(localStorage.getItem("filesdetials"))
 //  setOpenedfiles([
 //       {
 //         url:file_list.url,
@@ -58,7 +57,8 @@ formdata.append("myfiles",file)
   formdata.append("userId",userId);
   //http://localhost:2022
   //'https://neuro-nest.onrender.com
-    const res=await axios.post('https://neuro-nest.onrender.com/pdf',formdata,{
+  //https://neuro-nest.onrender.com
+    const res=await axios.post('http://localhost:2022/pdf',formdata,{
         headers:{
           "Content-Type":"multipart/form-data"
         }
@@ -83,8 +83,9 @@ await awscall(e);
    }
 const handleshow = async(index) => {
   try{
-    //http://localhost:2022
-  const response=await axios.get(`https://neuro-nest.onrender.com/get-signed-url?index=${index}&&userId=${userId}`)
+    //https://neuro-nest.onrender.com
+    console.log(index)
+  const response=await axios.get(`http://localhost:2022/get-signed-url?index=${index}&&userId=${userId}`)
   const url=response.data.url;
  const newwindow= window.open('',"_self");
  const pathname=new URL(url).pathname;
@@ -148,11 +149,14 @@ const handleideal=(index,url,type)=>{
 </div>
 <div className='filesystem'>
 <select className='list' onChange={(e) => handleshow(Number(e.target.value))}>
-    <option value="">Select file</option>
+     <option value="">Select file</option>
    {listfiles.map((name,index)=>(
     <option key={index} value={index}>{name}</option>
    ))}
+ 
+   
    </select><br/>
+  
    </div> 
    <div className='pdftable'>
    <table >

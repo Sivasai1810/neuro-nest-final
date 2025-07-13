@@ -4,6 +4,7 @@ import AWS from "aws-sdk";
 import dotenv from 'dotenv';
 import model from '../model/schema.js'
 import  mongodb  from "mongoose";
+import { url } from "inspector";
 const { folderurl }=model;
 dotenv.config();
 const router=express.Router();
@@ -45,7 +46,6 @@ uploadedUrls.push(result.Location);
       });
       await newurl.save();
     }
-
     res.json({ message: "Files uploaded successfully", files: uploadedUrls,status:true });
 
   } catch (error) {

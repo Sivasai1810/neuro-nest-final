@@ -12,7 +12,7 @@ router.use(express.json())
 router.use(cookieParser())
 router.use(cors());
 const allowedOrigins = [
- 'https:neuro-nest-1.onrender.com',
+ 'https://neuro-nest-1.onrender.com',
   'http://localhost:5173'
 ];
 

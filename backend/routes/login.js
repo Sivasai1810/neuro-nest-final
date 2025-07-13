@@ -3,29 +3,12 @@ const router = express.Router();
 import bcrypt from 'bcrypt';
 import joi from 'joi';
 import jwt from 'jsonwebtoken';
-import cors from 'cors';
 import cookieParser from 'cookie-parser';
 import models from '../model/schema.js';
 const { user, validateinput } = models;
 router.use(express.json())
 // connectdb()
 router.use(cookieParser())
-const allowedOrigins = [
-  "https://neuro-nest-final-1.onrender.com",
-  'http://localhost:5173'
-];
-
-router.use(cors({
-  origin: function (origin, callback) {
-    if (!origin || allowedOrigins.includes(origin)) {
-      callback(null, true);
-    } else {
-      callback(new Error('Not allowed by CORS'));
-    }
-  },
-  credentials: true
-}));
-
 const jwt_secret=process.env.JWT_PASSWORD
 router.post('/', async (req, res)=>{
     try{

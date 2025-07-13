@@ -17,11 +17,11 @@ import showpdfs from './routes/showpdfs.js'
 dotenv.config();
 const app = express();
 const allowedOrigins = [
- 'https://neuro-nest-1.onrender.com',
+  "https://neuro-nest-final-1.onrender.com",
   'http://localhost:5173'
 ];
 
-app.use(cors({
+router.use(cors({
   origin: function (origin, callback) {
     if (!origin || allowedOrigins.includes(origin)) {
       callback(null, true);

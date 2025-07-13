@@ -4,6 +4,7 @@ import AWS from 'aws-sdk';
 import dotenv from 'dotenv'
 const router=express.Router();
 import model from '../model/schema.js'
+import { hrtime } from 'process';
 const { folderurl } =model
 router.use(express.json())
 dotenv.config();
@@ -30,7 +31,7 @@ const s3key = decodeURIComponent(new URL(fileurl).pathname.slice(1));
 const params={
     Bucket:process.env.AWS_S3_BUCKET,
     Key:s3key,
-     Expires: 60*60
+     Expires:60*60*24
 
 }
 

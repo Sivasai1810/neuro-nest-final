@@ -1,6 +1,7 @@
 import mongodb from "mongoose"
 import joi from "joi"
 
+
 const userschema=mongodb.Schema({
     username:{type:String,required:true,unique:true},
     password:{type:String,required:true},
@@ -24,10 +25,14 @@ const notesschema=mongodb.Schema({
         type:mongodb.Types.ObjectId,
         ref:user
     },
-    notes:{
-        type:String,
-        required:true
-    }
+    notesindex:[
+         {index:{type:Number},notes:{type:String}}
+    ]
+//     // const  notesindex=[
+//     //      {index:0,notes:"arraey bhai"},
+//     //       {index:1,notes:"arraey bhai from 1"}
+//     // ]        
+//   console.log(notesindex[0])  
   
 })
 const savednotes=mongodb.model("savednotes",notesschema);
@@ -50,6 +55,12 @@ const filename=new mongodb.Schema({
         default:[]
     }
 })
+// const tempfiles=new mongodb.Schema({
+//     userId:{type:mongodb.Types.ObjectId,
+//         ref:user
+//     }
+
+// })
 const filelist=mongodb.model("filelist",filename);
 const validateinput=(data)=>{
    const Schema=joi.object({

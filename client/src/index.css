@@ -365,7 +365,7 @@ height: 100%;
 
 @media screen and (max-width: 768px) {
   .pdftable {
-    width: 90%;
+    width: 40%;
   }
 }
 
@@ -382,7 +382,7 @@ height: 100%;
   font-size: 14px;
   border: solid 1px wheat;
   cursor: pointer;
-  transition: background-color 0.3s, transform 0.2s;
+
 
 }
 
@@ -399,7 +399,7 @@ height: 100%;
   color: white;
   font-size: 14px;
   cursor: pointer;
-  transition: color 0.2s;
+
 }
 
 .cross:hover {
@@ -413,4 +413,10 @@ height: 100%;
 .pdftab1{
   width: 100%;
   height: 100%;
+}
+.uploadfile{
+cursor: pointer;
+}
+.uploadfile:hover{
+  background-color: black;
 }

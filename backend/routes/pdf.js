@@ -17,7 +17,7 @@ const storage = multer.memoryStorage();
 const upload = multer({ storage });
 router.post('/', upload.array("myfiles"), async (req, res) => {
   try {
-
+console.log("hello");
     const userId = req.body.userId;
     let uploadedUrls=[];
     for (const file of req.files) {

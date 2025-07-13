@@ -1,17 +1,17 @@
 import React, { useState } from 'react'
 import axios from 'axios'
-import close from './assets/close.png'
 import {useNavigate} from 'react-router-dom';
 export default function Notes() {
       const navigate=useNavigate();
       const [notes,setNotes]=useState("hello");
       const [message,setMessage]=useState("");
       const userId=localStorage.getItem("userId");
-
+const todoindex=localStorage.getItem("todoindex")
       const hadlesavenotes=async()=>{
 const res=await axios.post("https://neuro-nest.onrender.com/notes",{
  userId,
- notes}
+ todoindex
+}
 )
 if(res.data.success===false){
   alert(res.data.message);

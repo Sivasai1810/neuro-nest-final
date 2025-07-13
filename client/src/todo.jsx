@@ -53,6 +53,7 @@ window.location.reload();
 } 
 const handlenotes=(index)=>{
  navigate('/notes')
+ localStorage.setItem("todoindex",index);
 }
 
   return (
@@ -64,7 +65,7 @@ const handlenotes=(index)=>{
         onChange={handleInputChange} 
          onKeyDown={(e) => e.key === "Enter" && addTask(e)}
       /><br />
-      <button className='add' onClick={addTask}>Add-Task</button>
+      <button className='uploadfile' onClick={addTask}>Add-Task</button>
    <table className="todo-table">
   <thead>
     <tr>

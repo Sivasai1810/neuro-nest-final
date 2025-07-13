@@ -9,7 +9,12 @@ router.use(cors())
 router.post('/',async (req,res)=>{
     try{
         const index=localStorage.getItem("notesindex")
-const {userId,notes}=req.body;
+const {userId,todoindex}=req.body;
+console.log(userId,todoindex);
+const exist =await savednotes.findOne( {userId:new mongodb.Types.ObjectId(userId) })
+if(exist){
+
+}
 const newnotes=new savednotes({
     userId:new mongodb.Types.ObjectId(userId),
     notes:notes,

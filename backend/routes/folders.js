@@ -24,7 +24,6 @@ if(!exist){
     })
 }
 const fileurl=exist.url[index];
-
 const s3key = decodeURIComponent(new URL(fileurl).pathname.slice(1));
 
 const params={

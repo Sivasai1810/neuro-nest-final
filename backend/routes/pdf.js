@@ -32,10 +32,8 @@ router.post('/', upload.array("myfiles"), async (req, res) => {
  const result = await s3.upload(params).promise();
 uploadedUrls.push(result.Location);
     }
-    
-
+  
     const exist = await folderurl.findOne({ userId: new mongodb.Types.ObjectId(userId) });
-
     if (exist) {
       exist.url.push(...uploadedUrls);
       await exist.save();

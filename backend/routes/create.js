@@ -62,7 +62,7 @@ catch(error){
         if(error.code === 11000){
             return ( res.json({message:"username is already exist "}) )
         }
-         return (res.json({message:"internal server error"}))
+         return (res.json({message:"internal server error",error}))
         // console.log("the error is",error)
     }
 })

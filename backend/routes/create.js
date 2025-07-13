@@ -63,7 +63,7 @@ catch(error){
             return ( res.json({message:"username is already exist "}) )
         }
          return (res.json({message:"internal server error",error}))
-        // console.log("the error is",error)
+       console.log("the error is",error)
     }
 })
 export default router;

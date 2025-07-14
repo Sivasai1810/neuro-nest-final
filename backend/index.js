@@ -20,8 +20,7 @@ const allowedOrigins = [
   "https://neuro-nest-final-1.onrender.com",
   'http://localhost:5173'
 ];
-
-router.use(cors({
+app.use(cors({
   origin: function (origin, callback) {
     if (!origin || allowedOrigins.includes(origin)) {
       callback(null, true);

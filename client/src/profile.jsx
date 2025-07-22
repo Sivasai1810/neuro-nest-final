@@ -55,9 +55,6 @@ const formdata=new FormData()
 formdata.append("myfiles",file)
     })
   formdata.append("userId",userId);
-  //http://localhost:2022
-  //'https://neuro-nest.onrender.com
-  //https://neuro-nest.onrender.com
     const res=await axios.post('https://neuro-nest-final.onrender.com/pdf',formdata,{
         headers:{
           "Content-Type":"multipart/form-data"
@@ -121,7 +118,7 @@ const handleideal=(index,url,type)=>{
   
   return (
     
-    <div >
+    <div>
       <div className='filesystem'> 
       <p className='heading1'>WELCOME</p>
       <p>{message5}</p>

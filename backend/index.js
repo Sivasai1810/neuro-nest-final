@@ -17,7 +17,7 @@ import showpdfs from './routes/showpdfs.js'
 dotenv.config();
 const app = express();
 const allowedOrigins = [
-  "https://neuro-nest-final-1.onrender.com",
+  "https://neuro-nest-final-5khb.vercel.app",
   'http://localhost:5173'
 ];
 app.use(cors({

@@ -14,6 +14,7 @@ import pdf from './routes/pdf.js';
 import folder from './routes/folders.js';
 import storename from './routes/storename.js'
 import showpdfs from './routes/showpdfs.js'
+import livechart from "./routes/livechat.js"
 dotenv.config();
 const app = express();
 const allowedOrigins = [
@@ -46,7 +47,7 @@ try {
   app.use('/get-signed-url',folder);
   app.use('/callingfiles',storename);
   app.use('/alignpdf',showpdfs)
-  console.log("somthingggggggg is wrong ");
+  app.use('/livechat',livechart)
 } catch (error) {
   console.log("somthin is wrong ", error);
 }

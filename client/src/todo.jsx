@@ -77,8 +77,8 @@ const handlenotes=(index)=>{
   </thead>
   <tbody>
     {tasks.map((task, index) => (
-      <tr key={index}>
-        <td>{task}</td>
+      <tr  className='texts' key={index}>
+        <td >{task}</td>
         <td className='image'><img  src={plus} alt="+"  onClick={()=>handlenotes(index)}/></td>
         <td className='image'><button  className='delete'onClick={() => deleteTask(index)}>Delete</button></td>
       </tr>

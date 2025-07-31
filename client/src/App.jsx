@@ -3,10 +3,11 @@ import {BrowserRouter,Routes,Route} from 'react-router-dom'
  import Login from './login'
 import Create from './create'
 import Profile from './profile'
-import Entry from './entry'
 import Chatbot from './chatbot'
+import Livechat from './live'
 import Notes from './notes'
 import './App.css'
+import './Chat.css'
 import Todo from './todo'
 
 function App() {
@@ -16,9 +17,9 @@ function App() {
     <BrowserRouter>
          <Routes>
           <Route path='/create' element={<Create />}/>
-          <Route  path='*' element={<Entry />}/>
+<Route path='live' element={<Livechat/>} />
            <Route path='/profile' element={<Profile />}/>
-           <Route path ='/login' element={<Login />}/>
+           <Route path ='*' element={<Login />}/>
             <Route path ='/chatbot' element={<Chatbot />}/>
                <Route path ='/todo' element={<Todo />}/>
           <Route path='/notes' element={<Notes />}></Route>

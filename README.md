@@ -4,6 +4,7 @@ their study materials — PDFs, notes, PYQs, and more — in one sleek dashboard
 It combines time management, task tracking, and AI-powered assistance in one place.<br/>
 🔗 Live Demo <br/>
     <br/>
+    https://neuro-nest-final-5khb.vercel.app/ <br/>
 📸 Screenshots <br/>
 
 🚀 Features <br/>

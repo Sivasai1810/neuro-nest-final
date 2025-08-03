@@ -1,9 +1,9 @@
 import dotenv from 'dotenv';
+dotenv.config();
 import express from 'express';
 import cors from 'cors';
 import cookieParser from 'cookie-parser';
-import models from './db.js';
-const { connectdb } = models;
+import connectdb from './db.js';
 import createroute from './routes/create.js';
 import loginroute from './routes/login.js';
 import dashboardroute from './routes/dashboard.js';
@@ -14,8 +14,8 @@ import pdf from './routes/pdf.js';
 import folder from './routes/folders.js';
 import storename from './routes/storename.js'
 import showpdfs from './routes/showpdfs.js'
-import livechart from "./routes/livechat.js"
-dotenv.config();
+import server from "./routes/livechat.js"
+
 const app = express();
 const allowedOrigins = [
   "https://neuro-nest-final-5khb.vercel.app",
@@ -35,6 +35,10 @@ app.use(cors({
 app.use(express.json());
 app.use(cookieParser());
 
+
+
+
+
 try {
   connectdb();
   app.use('/api/create', createroute);
@@ -47,10 +51,9 @@ try {
   app.use('/get-signed-url',folder);
   app.use('/callingfiles',storename);
   app.use('/alignpdf',showpdfs)
-  app.use('/livechat',livechart)
 } catch (error) {
   console.log("somthin is wrong ", error);
 }
 
 const port = process.env.PORT;
-app.listen(port, () => console.log(`Example app listening on port ${port}!`));
+server.listen(port, () => console.log(`Example app listening on port ${port}!`));

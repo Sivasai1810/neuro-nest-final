@@ -2,7 +2,7 @@
 import React, { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
-import Close from './assets/close.png'
+import Close from "../../components/closes"
 export default function ChatBot() {
   const navigate=useNavigate();
   const [input, setInput] = useState("");
@@ -55,9 +55,9 @@ export default function ChatBot() {
       <button onClick={sendMessage} style={{ padding: "10px 20px", marginLeft: "10px" }}>
         Send
       </button>
-      <div className="closebar">
-        <img src={Close} alt="Close" onClick={()=>navigate('/Profile')} />
-      </div>
+     <div>
+      <Close />
+     </div>
     </div>
   );
 }

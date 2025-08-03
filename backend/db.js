@@ -11,6 +11,4 @@ const connectdb= async ()=>{
     console.log("unable to connect the database",error)
    }
 }
-export default {
-   connectdb,
-}
+export default connectdb

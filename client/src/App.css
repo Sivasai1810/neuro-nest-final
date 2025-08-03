@@ -40,4 +40,23 @@
 .read-the-docs {
   color: #888;
 }
-
+.container-box{
+  position: relative;
+  top: 20%;
+  z-index: 1;
+}
+.model-overlap{
+  backdrop-filter: blur(6px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 999;
+}
+.model-content {
+  background: white;
+  padding: 25px 30px;
+  border-radius: 12px;
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  min-width: 300px;
+  text-align: center;
+}

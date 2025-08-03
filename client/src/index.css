@@ -21,8 +21,14 @@ background: linear-gradient(to right,#0f0c29, #302b63, #9eb1ac);
   width: 150px;
 
 }
+.link:hover{border: 1px dashed black;
+  margin: 2px;
+  padding: 2px;
+  border-radius: 3px;
+}
 .links{
  color: rgb(26, 189, 99);
+
 }
 .inputs{
   border: 1px solid rgb(68, 68, 75);

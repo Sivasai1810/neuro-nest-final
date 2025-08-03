@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios'
-import plus from "./assets/plus.png"
+import plus from "../../assets/plus.png"
 import {useNavigate} from 'react-router-dom';
-import close from './assets/close.png'
+import Close from "../../components/closes"
 function Todo() {
   const navigate=useNavigate();
   const [input, setInput] = useState("");    
@@ -85,7 +85,7 @@ const handlenotes=(index)=>{
     ))}
   </tbody>
 </table>
- <img className="closebar"src={close} alt="*"  onClick={()=>{navigate('/profile')}}/>     
+  <Close />
     </div>
   );
 

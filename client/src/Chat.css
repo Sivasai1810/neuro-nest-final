@@ -1,8 +1,19 @@
-.socket{
-    background-color: gray;
-    width: 20%;
-    border-radius: 10px;
+
+.live{
+    position: fixed;
+    top: 59%;
+    background: linear-gradient(to right, #302b63, #9eb1ac);
+    left: 72%;
+    border-radius: 20px;
+    border: 1px dashed black;
+    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.5);
 }
-.chattext{
-margin-left: -11rem;
+.lives{
+    margin-top: 11rem;
+    margin-left: 6.68rem;
+}
+.chatinput{
+    padding-top: 10px;
+    
+
 }

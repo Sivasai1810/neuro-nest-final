@@ -1,7 +1,8 @@
 import React, { useEffect, useRef, useState } from 'react'
 import { useNavigate }from 'react-router-dom'
-import Stop from './stopwatch'
-import Botimage from './assets/bot.png'
+import Stop from '../features/coretools/stopwatch'
+import Botimage from "../assets/bot.png"
+import Live from "../features/live/live"
 import axios from 'axios'
 const profile =()=> {
   const userId=localStorage.getItem("userId");
@@ -20,14 +21,6 @@ useEffect(()=>{
 useEffect(()=>{
  const list=JSON.parse(localStorage.getItem("__fi_list"));
 setListfiles(list || []); 
-//const file_list=JSON.parse(localStorage.getItem("filesdetials"))
-//  setOpenedfiles([
-//       {
-//         url:file_list.url,
-//         filesname:file_list.filename,
-//         type:file_list.type
-//       }
-//      ])
 },[]) 
 console.log(listfiles)
   let filenames=[];
@@ -80,7 +73,7 @@ await awscall(e);
    }
 const handleshow = async(index) => {
   try{
-    //https://neuro-nest.onrender.com
+
     console.log(index)
   const response=await axios.get(`https://neuro-nest-final.onrender.com/get-signed-url?index=${index}&&userId=${userId}`)
   const url=response.data.url;
@@ -150,9 +143,10 @@ const handleideal=(index,url,type)=>{
    {listfiles.map((name,index)=>(
     <option key={index} value={index}>{name}</option>
    ))}
- 
-   
    </select><br/>
+   <div className='live'>
+    <Live/>
+   </div>
   
    </div> 
    <div className='pdftable'>
@@ -191,6 +185,7 @@ const handleideal=(index,url,type)=>{
     }
    </div>
    </div>
+ 
  
 </div>
   )

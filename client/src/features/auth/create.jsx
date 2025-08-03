@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Link,useNavigate } from "react-router-dom";
  import axios from "axios";
+ import Text from "../../components/text"
 function Create(){
    
 const navigate=useNavigate()
@@ -40,13 +41,7 @@ const handlenewpage=()=>{
 return(
 <form onSubmit={handleroute}>
     <div>
-     <div className="images">
-    <div className="image33">
-      <h1 className="headingf">welcome to the neuro-nest</h1><br/>
-      <h3 className="headingf">Neuro Nest Your Smart Study Hub
-Organize, track, and master your learning journey with AI-powered tools and a clean workspace.</h3>
-     </div>
-    </div>
+    <div><  Text/></div>
      <div className="login">
          <h3>Create  your account</h3>
     <h5 className="names">Enter your detials below  <br/>your account </h5>

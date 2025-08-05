@@ -7,7 +7,6 @@ import Notes from './features/coretools/notes'
 import './App.css'
 import './Chat.css'
 import Todo from './features/coretools/todo'
-import Live from "./features/live/live"
 import Dashboard from './dashboard/dashboard'
 
 function App() {

@@ -2,7 +2,7 @@ import React, { useEffect, useRef, useState } from 'react'
 import { useNavigate }from 'react-router-dom'
 import Stop from '../features/coretools/stopwatch'
 import Botimage from "../assets/bot.png"
-import Live from "../features/live/live"
+
 import axios from 'axios'
 const profile =()=> {
   const userId=localStorage.getItem("userId");

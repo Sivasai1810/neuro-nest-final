@@ -20,7 +20,6 @@ function App() {
             <Route path ='/chatbot' element={<Chatbot />}/>
                <Route path ='/todo' element={<Todo />}/>
           <Route path='/notes' element={<Notes />}></Route>
-          <Route path='/live' element={<Live />}></Route>
           <Route path='/dashboard' element={<Dashboard />} ></Route>
          </Routes>
      </BrowserRouter>
